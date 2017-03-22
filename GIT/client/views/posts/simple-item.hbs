@@ -1,0 +1,64 @@
+{{#if this.posts}}
+	{{#each this.posts}}
+		<li class="tu b ahx wall-item" data-postId="{{id}}" data-profileId="{{user_id}}">
+			<img class="bqa wp yy agc" src="./client/media/profile/avatar-dhg.png" />
+			<div class="tv">
+				<div class="bqj">
+					<small class="aec axr">{{date}}</small>
+					<h6>
+						{{#if profile.firstname}}
+							{{firstname}} {{lastname}}
+						{{else}}
+							Firstname Lastname
+						{{/if}}
+					</h6>
+				</div>
+
+				<p>{{text}}</p>
+
+				{{#if mediaList}}
+					<div class="bqg" data-grid="images">
+						{{#mediaList}}
+							<div class="rowGrid-item">
+								<img data-action="zoom" data-width="1050" data-height="700" src="{{url}}" alt="post media" />
+							</div>
+						{{/mediaList}}
+					</div>
+				{{/if}}
+
+				<ul class="bqe afw comments-list">
+					{{#if comments}}
+						
+							{{#comments}}
+									
+								{{> comment-item}}
+
+							{{/comments}}
+						
+					{{/if}}
+				</ul>
+				{{!-- Comment input --}}
+				<div class="post-comment">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Comment">
+			      <span class="input-group-btn">
+			        <button class="btn btn-secondary js-send-comment" type="button"><i class="fa fa-comment no-padding" aria-hidden="true"></i></button>
+			      </span>	
+					</div>
+				</div>
+
+			</div>
+
+			{{!-- post controll buttons --}}
+			<div class="post-controll">
+				<span class="set-comment-post" data-type="post" data-id="{{id}}">Commented</span>
+				<span class="remove-post" data-type="post" data-id="{{id}}">Remove post</span>
+			</div>
+		</li>
+	{{/each}}
+
+{{else}}
+	{{> ../error/posts/empty}}
+{{/if}}
+
+{{!-- {{> demo-single.hbs}} --}}
